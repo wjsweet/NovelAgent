@@ -22,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "wjsweet"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/wjsweet/NovelAgent",
+    "accountId": "e5e334e7-62cb-4ded-a6cd-6a282a857a6a"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3,
   &quot;fromUser&quot;: false
@@ -107,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782727947887</updated>
       <workItem from="1782727948915" duration="2736000" />
-      <workItem from="1782730724771" duration="3375000" />
+      <workItem from="1782730724771" duration="4583000" />
     </task>
     <task id="LOCAL-00001" summary="first try">
       <option name="closed" value="true" />
@@ -125,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782738406750</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first try">
+      <option name="closed" value="true" />
+      <created>1782739098239</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1782739098239</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
