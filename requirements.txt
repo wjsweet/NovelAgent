@@ -1,2 +1,123 @@
+# =============================================================================
+# requirements.txt —— 项目依赖清单
+# =============================================================================
+#
+# 【安装命令】
+# pip install -r requirements.txt
+#
+# 【依赖分层说明】
+#
+# Layer 1 - LangChain 核心（必须）
+#   LangChain 是目前最主流的 LLM 应用开发框架，提供：
+#   - LLM 调用的统一接口（支持 OpenAI、智谱、百度等）
+#   - Prompt 模板管理
+#   - Chain（链式调用）
+#   - Tool（工具定义）
+#
+# Layer 2 - LangGraph（必须）
+#   LangGraph 是 LangChain 团队开发的多 Agent 编排框架，提供：
+#   - 有状态的工作流图
+#   - 循环和条件分支
+#   - 状态持久化
+#
+# Layer 3 - RAG 相关（可选，但强烈推荐）
+#   向量数据库和嵌入模型，用于 RAG 功能
+#
+# Layer 4 - 工具库（可选）
+#   辅助功能
+#
+# 【为什么选择这些库？】
+# - langchain-openai：智谱 GLM 兼容 OpenAI 接口，直接复用
+# - langchain-chroma：本地向量数据库，无需部署服务器
+# - langchain-huggingface：本地嵌入模型，无需 API Key
+# =============================================================================
 
-langgraph
+# ============================================================
+# Layer 1: LangChain 核心（必须安装）
+# ============================================================
+
+# LangChain 核心库（Prompt、Message、Document 等基础类）
+langchain-core>=0.3.0
+
+# LangChain 主库（Chain、Agent 等高级功能）
+langchain>=0.3.0
+
+# OpenAI 兼容接口（智谱 GLM 使用 OpenAI 格式，所以用这个）
+langchain-openai>=0.2.0
+
+# LangChain 社区集成（包含智谱嵌入模型等）
+langchain-community>=0.3.0
+
+# 文本分割工具（RAG 必用）
+langchain-text-splitters>=0.3.0
+
+# ============================================================
+# Layer 2: LangGraph（必须安装）
+# ============================================================
+
+# LangGraph 多 Agent 工作流编排框架
+langgraph>=0.2.0
+
+# ============================================================
+# Layer 3: RAG 相关（推荐安装）
+# ============================================================
+
+# Chroma 向量数据库（本地持久化，无需部署服务器）
+# 适合学习和小项目，生产环境可换 Pinecone/Weaviate
+chromadb>=0.5.0
+
+# LangChain 的 Chroma 集成包
+langchain-chroma>=0.1.0
+
+# HuggingFace 嵌入模型（本地运行，无需 API Key）
+# 当智谱 API 不可用时的降级方案
+langchain-huggingface>=0.1.0
+
+# sentence-transformers：HuggingFace 嵌入模型的底层库
+# 包含 shibing624/text2vec-base-chinese（中文效果好）
+sentence-transformers>=3.0.0
+
+# ============================================================
+# Layer 4: 工具库
+# ============================================================
+
+# 环境变量管理（从 .env 文件加载 API Key）
+# 使用方式：在项目根目录创建 .env 文件，写入 GLM_API_KEY=xxx
+python-dotenv>=1.0.0
+
+# 进度条（处理大量文件时显示进度）
+tqdm>=4.66.0
+
+# ============================================================
+# 【快速安装指南】
+# ============================================================
+#
+# 方案1：完整安装（推荐，包含所有功能）
+#   pip install -r requirements.txt
+#
+# 方案2：最小安装（仅核心功能，无 RAG）
+#   pip install langchain-core langchain langchain-openai langgraph python-dotenv
+#
+# 方案3：如果安装 chromadb 报错（常见于 M1/M2 Mac）
+#   pip install chromadb --no-binary chromadb
+#   或者：conda install -c conda-forge chromadb
+#
+# 方案4：如果不想用本地嵌入模型（节省磁盘空间）
+#   注释掉 langchain-huggingface 和 sentence-transformers
+#   系统会自动降级到 Mock 嵌入模型
+#
+# ============================================================
+# 【环境配置】
+# ============================================================
+#
+# 1. 创建 .env 文件（不要提交到 Git！）：
+#    echo "GLM_API_KEY=your_api_key_here" > .env
+#
+# 2. 获取智谱 API Key：
+#    https://open.bigmodel.cn/ 注册后免费获取
+#
+# 3. 准备小说素材（可选，用于 RAG）：
+#    mkdir novels
+#    # 把你的 .txt 小说文件放入 novels/ 目录
+#
+# ============================================================

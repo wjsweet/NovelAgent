@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bd0eb53a-173f-4520-9a48-cdbe9ba3ef59" name="更改" comment="first try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agents/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/agents/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agents/critic.py" beforeDir="false" afterPath="$PROJECT_DIR$/agents/critic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agents/designer.py" beforeDir="false" afterPath="$PROJECT_DIR$/agents/designer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agents/writer.py" beforeDir="false" afterPath="$PROJECT_DIR$/agents/writer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_base/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_base/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knowledge_base/rag_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_base/rag_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,15 +32,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "wjsweet"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wjsweet&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/wjsweet/NovelAgent",
+    "url": "git@github.com:wjsweet/NovelAgent.git",
     "accountId": "e5e334e7-62cb-4ded-a6cd-6a282a857a6a"
   }
 }]]></component>
@@ -56,8 +66,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/empress_jing/Code/NovelAgent",
+    "git-widget-placeholder": "master__v2",
+    "last_opened_file_path": "/Users/empress_jing/Code/NovelAgent/tools",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,7 +79,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tools" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/knowledge_base" />
+      <recent name="$PROJECT_DIR$/agents" />
     </key>
   </component>
   <component name="RunManager">
@@ -119,7 +132,8 @@
       <option name="presentableId" value="Default" />
       <updated>1782727947887</updated>
       <workItem from="1782727948915" duration="2736000" />
-      <workItem from="1782730724771" duration="4583000" />
+      <workItem from="1782730724771" duration="6350000" />
+      <workItem from="1782821131761" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="first try">
       <option name="closed" value="true" />
