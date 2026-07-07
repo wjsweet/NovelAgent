@@ -327,6 +327,24 @@ def build_workflow(llm, rag_manager):
 # 第四部分：保存最终结果
 # =============================================================================
 
+def merge_state_update(current_state: dict, node_update: dict) -> dict:
+    """将节点的局部输出合并到完整状态。
+
+    LangGraph 中 messages 字段使用 operator.add reducer，因此需要追加；
+    其他字段使用默认的覆盖语义。在 stream 过程中按相同规则累积，
+    就能在不再次 invoke 工作流的情况下得到最终完整状态。
+    """
+    merged_state = dict(current_state)
+
+    for key, value in node_update.items():
+        if key == "messages":
+            merged_state[key] = list(merged_state.get(key, [])) + list(value)
+        else:
+            merged_state[key] = value
+
+    return merged_state
+
+
 def save_final_result(final_state: dict):
     """
     保存最终创作结果到文件。
@@ -474,6 +492,10 @@ def main():
     # stream 就像你的测试框架的"实时日志输出"，
     # 而不是等所有测试跑完才看报告。
 
+    # stream 默认返回每个节点的局部更新，而不是完整状态。
+    # 这里按 NovelState 的 reducer 规则实时合并，避免为了取最终状态
+    # 再次调用 app.invoke(initial_state)，导致整个创作流程重复执行。
+    accumulated_state = dict(initial_state)
     final_state = None
     node_execution_count = {}  # 记录每个节点执行了几次
 
@@ -485,6 +507,10 @@ def main():
         # event 是一个字典：{节点名称: 节点输出}
         # 每次 yield 只包含一个节点的输出
         for node_name, node_output in event.items():
+
+            # 将当前节点的局部输出并入完整状态。
+            accumulated_state = merge_state_update(accumulated_state, node_output)
+            final_state = accumulated_state
 
             # 统计节点执行次数
             node_execution_count[node_name] = node_execution_count.get(node_name, 0) + 1
@@ -523,9 +549,6 @@ def main():
                     print(f"\n   审核详情（前300字）：")
                     print(f"   {feedback[:300]}{'...' if len(feedback) > 300 else ''}")
 
-            # 保存最新状态（用于最终保存）
-            final_state = node_output
-
     # ------------------------------------------------------------------
     # 阶段5：执行完毕，汇总结果
     # ------------------------------------------------------------------
@@ -547,20 +570,7 @@ def main():
     # 阶段6：保存结果
     # ------------------------------------------------------------------
     if final_state:
-        # 合并最终状态（stream 模式下 final_state 只是最后一个节点的输出）
-        # 需要重新 invoke 一次获取完整状态，或者在 stream 过程中累积状态
-        # 这里我们用 invoke 获取完整的最终状态
-        print("\n" + "=" * 60)
-        print("🔄 获取完整最终状态...")
-        print("=" * 60)
-
-        try:
-            complete_final_state = app.invoke(initial_state)
-            save_final_result(complete_final_state)
-        except Exception as e:
-            print(f"   ⚠️  获取完整状态失败：{e}")
-            print("   💡 使用流式执行中的最后一个节点输出作为结果")
-            save_final_result(final_state)
+        save_final_result(final_state)
 
     print("\n" + "=" * 60)
     print("✨ 感谢使用 NovelAgent！")
